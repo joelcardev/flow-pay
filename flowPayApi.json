@@ -1,0 +1,83 @@
+{
+  "info": {
+    "_postman_id": "a8e29be2-5c4d-4704-9792-544b42ca4a2d",
+    "name": "FlowPay API",
+    "description": "API para gerenciamento de suporte e agentes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Support Distribution",
+      "item": [
+        {
+          "name": "Distribute Request",
+          "request": {
+            "url": "http://localhost:8080/api/v1/support-distribution/request",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"requestId\":\"12345\",\"customerId\":\"1\",\"requestType\":\"LOAN_CONTRACT\",\"priority\":\"HIGH\"}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Support Agent",
+      "item": [
+        {
+          "name": "Finalize Request",
+          "request": {
+            "url": "http://localhost:8080/api/v1/agents/finalize-request/{{requestId}}",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Agent Status",
+          "request": {
+            "url": "http://localhost:8080/api/v1/agents/status",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"agentId\":1,\"status\":\"ONLINE\"}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Agent Online Status",
+          "request": {
+            "url": "http://localhost:8080/api/v1/agents/{{agentId}}/online",
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
